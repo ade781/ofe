@@ -2,7 +2,7 @@
   "name": "ofe",
   "version": "1.0.0",
   "private": true,
-  "proxy": "http://localhost:8081",
+  "proxy": "http://localhost:8082",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
