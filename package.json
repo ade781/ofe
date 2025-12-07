@@ -2,7 +2,7 @@
   "name": "ofe",
   "version": "1.0.0",
   "private": true,
-  "proxy": "http://localhost:8082",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -10,14 +10,15 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "lucide-react": "^0.556.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
     "postcss": "^8.4.0",
-    "autoprefixer": "^10.4.0"
+    "tailwindcss": "^3.4.0"
   },
   "browserslist": {
     "production": [

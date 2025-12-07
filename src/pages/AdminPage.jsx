@@ -1,29 +1,37 @@
 import React from "react";
-import { Header } from "../components/Header";
+import { DashboardLayout } from "../components/DashboardLayout";
 import { BpTable } from "../components/BpTable";
 
 export const AdminPage = ({ user, bpData, bpLoading, bpError, onLogout }) => {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 via-white to-slate-200 px-4">
-            <div className="w-full max-w-4xl bg-white/90 backdrop-blur rounded-2xl shadow-lg border border-slate-100 p-8 space-y-6">
-                <Header />
-
-                <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 space-y-1">
-                    <p className="text-sm text-amber-700">Dashboard Admin</p>
-                    <p className="text-lg font-semibold text-amber-900">Halo, {user.username}</p>
-                    <p className="text-sm text-amber-800">Anda memiliki akses khusus admin.</p>
+        <DashboardLayout user={user} onLogout={onLogout}>
+            <div className="space-y-6">
+                {/* Banner Selamat Datang */}
+                <div className="bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl p-6 text-white shadow-lg">
+                    <h2 className="text-2xl font-bold mb-1">Halo, Admin {user.username}!</h2>
+                    <p className="text-amber-100 opacity-90">
+                        Selamat datang kembali di panel kontrol OFE. Anda memiliki akses penuh.
+                    </p>
                 </div>
 
-                <BpTable data={bpData} loading={bpLoading} error={bpError} />
+                {/* Statistik Ringkas (Contoh) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                        <p className="text-sm text-slate-500">Total Badan Publik</p>
+                        <p className="text-2xl font-bold text-slate-800">{bpData.length}</p>
+                    </div>
+                    {/* Tambahkan widget lain sesuai kebutuhan */}
+                </div>
 
-                <button
-                    type="button"
-                    onClick={onLogout}
-                    className="w-full py-2.5 rounded-lg border border-slate-300 text-slate-700 text-sm font-semibold hover:bg-slate-100 active:bg-slate-200 transition"
-                >
-                    Keluar
-                </button>
+                {/* Tabel Data */}
+                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <div className="mb-4">
+                        <h3 className="text-lg font-semibold text-slate-800">Daftar Badan Publik</h3>
+                        <p className="text-sm text-slate-500">Data real-time dari backend.</p>
+                    </div>
+                    <BpTable data={bpData} loading={bpLoading} error={bpError} />
+                </div>
             </div>
-        </div>
+        </DashboardLayout>
     );
 };
