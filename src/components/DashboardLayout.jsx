@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { Navbar } from "./Navbar";
 
-export const DashboardLayout = ({ children, user, onLogout }) => {
+export const DashboardLayout = ({ children, user, onLogout, onNavigate }) => { // 1. Terima onNavigate
     const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     return (
@@ -13,6 +13,7 @@ export const DashboardLayout = ({ children, user, onLogout }) => {
                 setIsOpen={setSidebarOpen}
                 user={user}
                 onLogout={onLogout}
+                onNavigate={onNavigate} // 2. Teruskan ke Sidebar (PENTING!)
             />
 
             {/* Content Area */}

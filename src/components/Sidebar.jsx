@@ -1,12 +1,14 @@
 import React from "react";
-import { X, Home, Settings, Database, LogOut } from "lucide-react";
+import { X, Home, Settings, Database, LogOut, Activity } from "lucide-react"; // Import ikon Activity
 
-export const Sidebar = ({ isOpen, setIsOpen, user, onLogout }) => {
-    // Menu items bisa disesuaikan berdasarkan role nanti
+export const Sidebar = ({ isOpen, setIsOpen, user, onLogout, onNavigate }) => { // Tambahkan prop onNavigate
+    // Menu items dengan target halaman
     const menuItems = [
-        { icon: <Home size={20} />, label: "Dashboard", href: "#" },
-        { icon: <Database size={20} />, label: "Data Badan Publik", href: "#" },
-        { icon: <Settings size={20} />, label: "Pengaturan", href: "#" },
+        { icon: <Home size={20} />, label: "Dashboard", target: "dashboard" },
+        // Tambahkan item menu baru untuk Status Permohonan
+        { icon: <Activity size={20} />, label: "Status Permohonan", target: "status" },
+        // { icon: <Database size={20} />, label: "Data Badan Publik", target: "data" }, // Jika nanti ada halaman ini
+        { icon: <Settings size={20} />, label: "Pengaturan", target: "settings" },
     ];
 
     return (
@@ -43,14 +45,17 @@ export const Sidebar = ({ isOpen, setIsOpen, user, onLogout }) => {
 
                     <nav className="space-y-1">
                         {menuItems.map((item, index) => (
-                            <a
+                            <button
                                 key={index}
-                                href={item.href}
-                                className="flex items-center px-4 py-3 text-slate-300 transition-colors rounded-lg hover:bg-slate-800 hover:text-white group"
+                                onClick={() => {
+                                    onNavigate(item.target); // Panggil fungsi navigasi
+                                    setIsOpen(false); // Tutup sidebar (mobile UX)
+                                }}
+                                className="w-full flex items-center px-4 py-3 text-slate-300 transition-colors rounded-lg hover:bg-slate-800 hover:text-white group text-left"
                             >
                                 <span className="mr-3">{item.icon}</span>
                                 <span className="text-sm font-medium">{item.label}</span>
-                            </a>
+                            </button>
                         ))}
                     </nav>
                 </div>
