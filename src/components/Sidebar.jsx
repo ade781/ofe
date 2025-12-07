@@ -1,15 +1,19 @@
 import React from "react";
-import { X, Home, Settings, Database, LogOut, Activity } from "lucide-react"; // Import ikon Activity
+import { X, Home, Settings, Database, LogOut, Activity, Mail, Inbox, History } from "lucide-react";
 
-export const Sidebar = ({ isOpen, setIsOpen, user, onLogout, onNavigate }) => { // Tambahkan prop onNavigate
-    // Menu items dengan target halaman
+export const Sidebar = ({ isOpen, setIsOpen, user, onLogout, onNavigate }) => {
     const menuItems = [
         { icon: <Home size={20} />, label: "Dashboard", target: "dashboard" },
-        // Tambahkan item menu baru untuk Status Permohonan
         { icon: <Activity size={20} />, label: "Status Permohonan", target: "status" },
-        // { icon: <Database size={20} />, label: "Data Badan Publik", target: "data" }, // Jika nanti ada halaman ini
-        { icon: <Settings size={20} />, label: "Pengaturan", target: "settings" },
+        { icon: <Inbox size={20} />, label: "Kotak Masuk", target: "inbox" },
+        { icon: <History size={20} />, label: "Riwayat Email", target: "history" },
     ];
+
+    if (user?.role === "admin") {
+        menuItems.push({ icon: <Database size={20} />, label: "Data Badan Publik", target: "data" });
+    }
+
+    menuItems.push({ icon: <Settings size={20} />, label: "Pengaturan", target: "settings" });
 
     return (
         <>

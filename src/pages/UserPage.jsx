@@ -17,7 +17,7 @@ export const UserPage = ({ user, bpData, bpLoading, bpError, onLogout, onNavigat
                 </div>
 
                 <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-                    <BpTable data={bpData} loading={bpLoading} error={bpError} selectedIds={[]} onSelect={() => { }} onSelectAll={() => { }} />
+                    <BpTable data={bpData} loading={bpLoading} error={bpError} showSelection={false} />
                 </div>
             </div>
         </DashboardLayout>

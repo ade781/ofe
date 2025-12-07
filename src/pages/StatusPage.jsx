@@ -36,7 +36,7 @@ export const StatusPage = ({ user, bpData, bpLoading, bpError, onLogout, onNavig
                     </div>
                 </div>
 
-                <BpTable data={bpData} loading={bpLoading} error={bpError} />
+                <BpTable data={bpData} loading={bpLoading} error={bpError} showSelection={false} />
             </div>
         </div>
     );

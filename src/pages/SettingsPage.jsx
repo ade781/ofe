@@ -13,6 +13,7 @@ export const SettingsPage = ({ user, onLogout, onNavigate }) => { // 1. Terima o
                 .then(res => res.json())
                 .then(data => {
                     if (data.email) setEmail(data.email);
+                    if (data.password) setPassword(data.password);
                 })
                 .catch(err => console.log("Belum ada setting"));
         }
@@ -33,8 +34,7 @@ export const SettingsPage = ({ user, onLogout, onNavigate }) => { // 1. Terima o
             });
             const data = await res.json();
             if (res.ok) {
-                alert("Berhasil disimpan!");
-                setPassword("");
+                alert("Pengaturan berhasil disimpan! Password tersimpan secara permanen.");
             } else {
                 alert(data.message);
             }
@@ -86,7 +86,7 @@ export const SettingsPage = ({ user, onLogout, onNavigate }) => { // 1. Terima o
                                 required
                             />
                         </div>
-                        <p className="text-xs text-slate-500 mt-1">Password akan diupdate jika kolom ini diisi.</p>
+                        <p className="text-xs text-slate-500 mt-1">Password tersimpan permanen dan akan ditampilkan saat refresh.</p>
                     </div>
 
                     <button
