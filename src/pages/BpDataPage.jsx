@@ -72,21 +72,24 @@ export const BpDataPage = ({ user, onLogout, onNavigate }) => {
     return (
         <DashboardLayout user={user} onLogout={onLogout} onNavigate={onNavigate}>
             <div className="space-y-6">
-                <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-slate-800">Manajemen Data Badan Publik</h2>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 className="text-3xl font-bold text-gov-dark">📋 Manajemen Data Badan Publik</h2>
+                        <p className="text-sm text-gray-600 mt-1">Kelola database badan publik sistem</p>
+                    </div>
                     <button
                         onClick={() => { setEditingData(null); setIsModalOpen(true); }}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition"
+                        className="bg-gradient-to-r from-gov-dark to-gov-light text-white px-5 py-3 rounded-lg flex items-center gap-2 hover:from-gov-light hover:to-gov-dark transition font-bold shadow-lg whitespace-nowrap"
                     >
-                        <Plus size={18} /> Tambah Data
+                        <Plus size={20} /> Tambah Data
                     </button>
                 </div>
 
-                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                <div className="bg-white rounded-lg border-2 border-gov-border shadow-md p-6">
                     <BpTable
                         data={data}
                         loading={loading}
-                        enableActions={true} // Aktifkan tombol edit/delete
+                        enableActions={true}
                         onEdit={(row) => { setEditingData(row); setIsModalOpen(true); }}
                         onDelete={handleDelete}
                         showSelection={false}

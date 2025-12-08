@@ -12,8 +12,8 @@ export const Toast = ({ type = "info", message, onClose, duration = 5000 }) => {
     const configs = {
         success: {
             icon: <CheckCircle size={20} />,
-            bg: "bg-gradient-to-r from-green-500 to-emerald-600",
-            text: "text-white"
+            bg: "bg-gradient-to-r from-gov-accent to-green-600",
+            text: "text-gov-dark"
         },
         error: {
             icon: <XCircle size={20} />,
@@ -22,12 +22,12 @@ export const Toast = ({ type = "info", message, onClose, duration = 5000 }) => {
         },
         warning: {
             icon: <AlertTriangle size={20} />,
-            bg: "bg-gradient-to-r from-amber-500 to-orange-600",
+            bg: "bg-gradient-to-r from-gov-accent to-gov-light",
             text: "text-white"
         },
         info: {
             icon: <Info size={20} />,
-            bg: "bg-gradient-to-r from-blue-500 to-blue-600",
+            bg: "bg-gradient-to-r from-gov-light to-gov-light2",
             text: "text-white"
         }
     };
@@ -36,9 +36,9 @@ export const Toast = ({ type = "info", message, onClose, duration = 5000 }) => {
 
     return (
         <div className="fixed top-4 right-4 z-[60] animate-slideInRight">
-            <div className={`${config.bg} ${config.text} px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 min-w-[300px] max-w-md`}>
+            <div className={`${config.bg} ${config.text} px-6 py-4 rounded-lg shadow-xl flex items-center gap-3 min-w-[300px] max-w-md border border-opacity-30 border-white`}>
                 <div className="flex-shrink-0">{config.icon}</div>
-                <p className="flex-1 text-sm font-medium">{message}</p>
+                <p className="flex-1 text-sm font-semibold">{message}</p>
                 {onClose && (
                     <button onClick={onClose} className="flex-shrink-0 hover:bg-white/20 p-1 rounded transition">
                         <X size={18} />

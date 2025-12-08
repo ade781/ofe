@@ -10,12 +10,12 @@ export const LoginForm = ({ onSubmit, isLoading }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700">Username</label>
+                <label className="block text-sm font-semibold text-gov-dark">Username</label>
                 <input
                     type="text"
-                    className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2.5 rounded-lg border-2 border-gov-border text-sm focus:outline-none focus:ring-2 focus:ring-gov-light focus:border-gov-light transition"
                     placeholder="admin"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -26,11 +26,11 @@ export const LoginForm = ({ onSubmit, isLoading }) => {
             </div>
 
             <div className="space-y-2">
-                <label className="block text-sm font-medium text-slate-700">Password</label>
+                <label className="block text-sm font-semibold text-gov-dark">Password</label>
                 <input
                     type="password"
-                    className="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="123"
+                    className="w-full px-4 py-2.5 rounded-lg border-2 border-gov-border text-sm focus:outline-none focus:ring-2 focus:ring-gov-light focus:border-gov-light transition"
+                    placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     autoComplete="current-password"
@@ -42,9 +42,9 @@ export const LoginForm = ({ onSubmit, isLoading }) => {
             <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 active:bg-blue-800 disabled:opacity-70 disabled:cursor-not-allowed transition"
+                className="w-full py-3 rounded-lg bg-gradient-to-r from-gov-dark to-gov-light text-white text-sm font-bold hover:from-gov-light hover:to-gov-dark active:opacity-90 disabled:opacity-70 disabled:cursor-not-allowed transition shadow-lg hover:shadow-xl"
             >
-                {isLoading ? "Memproses..." : "Login"}
+                {isLoading ? "Memproses..." : "Login ke Portal"}
             </button>
         </form>
     );

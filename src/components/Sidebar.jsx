@@ -27,23 +27,26 @@ export const Sidebar = ({ isOpen, setIsOpen, user, onLogout, onNavigate }) => {
 
             {/* Sidebar Container */}
             <aside
-                className={`fixed inset-y-0 left-0 z-30 w-64 bg-slate-900 text-white transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+                className={`fixed inset-y-0 left-0 z-30 w-64 bg-gradient-to-b from-gov-dark to-gov-dark text-white transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
                     }`}
             >
-                <div className="flex items-center justify-between h-16 px-6 bg-slate-950">
-                    <span className="text-xl font-bold tracking-wider">OFE SYSTEM</span>
-                    <button onClick={() => setIsOpen(false)} className="lg:hidden text-slate-400 hover:text-white">
+                <div className="flex items-center justify-between h-16 px-6 bg-gov-dark border-b-4 border-gov-accent">
+                    <div className="flex items-center gap-2">
+                        <span className="text-2xl">🏛️</span>
+                        <span className="text-sm font-bold tracking-widest">PORTAL GOV</span>
+                    </div>
+                    <button onClick={() => setIsOpen(false)} className="lg:hidden text-gov-accent hover:text-white transition">
                         <X size={24} />
                     </button>
                 </div>
 
                 <div className="px-4 py-6 space-y-4">
                     {/* User Info Kecil di Sidebar */}
-                    <div className="px-4 py-3 mb-6 bg-slate-800 rounded-lg">
-                        <p className="text-xs text-slate-400 uppercase">Login sebagai</p>
-                        <p className="font-semibold truncate">{user?.username || 'User'}</p>
-                        <span className={`text-xs px-2 py-0.5 rounded-full ${user?.role === 'admin' ? 'bg-amber-500 text-black' : 'bg-emerald-500 text-white'}`}>
-                            {user?.role || 'Guest'}
+                    <div className="px-4 py-4 mb-6 bg-gov-light2 rounded-lg border-l-4 border-gov-accent">
+                        <p className="text-xs text-gov-accent font-semibold uppercase">Login sebagai</p>
+                        <p className="font-bold text-white truncate mt-1">{user?.username || 'User'}</p>
+                        <span className={`inline-block text-xs px-2.5 py-1 rounded-full mt-2 font-semibold ${user?.role === 'admin' ? 'bg-gov-accent text-gov-dark' : 'bg-emerald-500 text-white'}`}>
+                            {user?.role === 'admin' ? '👤 Administrator' : '👤 Pengguna'}
                         </span>
                     </div>
 
@@ -52,12 +55,12 @@ export const Sidebar = ({ isOpen, setIsOpen, user, onLogout, onNavigate }) => {
                             <button
                                 key={index}
                                 onClick={() => {
-                                    onNavigate(item.target); // Panggil fungsi navigasi
-                                    setIsOpen(false); // Tutup sidebar (mobile UX)
+                                    onNavigate(item.target);
+                                    setIsOpen(false);
                                 }}
-                                className="w-full flex items-center px-4 py-3 text-slate-300 transition-colors rounded-lg hover:bg-slate-800 hover:text-white group text-left"
+                                className="w-full flex items-center px-4 py-3 text-gov-accent transition-all rounded-lg hover:bg-gov-light2 hover:text-white hover:pl-6 active:bg-gov-light group text-left"
                             >
-                                <span className="mr-3">{item.icon}</span>
+                                <span className="mr-3 text-gov-accent group-hover:text-white">{item.icon}</span>
                                 <span className="text-sm font-medium">{item.label}</span>
                             </button>
                         ))}
@@ -65,13 +68,13 @@ export const Sidebar = ({ isOpen, setIsOpen, user, onLogout, onNavigate }) => {
                 </div>
 
                 {/* Tombol Logout di Bawah Sidebar */}
-                <div className="absolute bottom-0 w-full p-4 border-t border-slate-800">
+                <div className="absolute bottom-0 w-full p-4 border-t border-gov-light2 bg-gov-dark">
                     <button
                         onClick={onLogout}
-                        className="flex items-center w-full px-4 py-2 text-red-400 transition-colors rounded-lg hover:bg-slate-800 hover:text-red-300"
+                        className="flex items-center w-full px-4 py-3 text-white bg-red-600 transition-all rounded-lg hover:bg-red-700 hover:pl-6 font-semibold"
                     >
                         <LogOut size={20} className="mr-3" />
-                        <span className="text-sm font-medium">Keluar</span>
+                        <span className="text-sm">Keluar</span>
                     </button>
                 </div>
             </aside>

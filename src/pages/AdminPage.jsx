@@ -183,10 +183,10 @@ export const AdminPage = ({ user, bpData, bpLoading, bpError, onLogout, onNaviga
                 <div className="space-y-6">
                     <div className="grid gap-4 md:grid-cols-3">
                         {statCards.map((card) => (
-                            <div key={card.label} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                                <p className="text-xs font-medium uppercase tracking-wide text-slate-400 mb-2">{card.label}</p>
-                                <p className="text-3xl font-semibold text-slate-900">{card.value}</p>
-                                <p className="text-xs text-slate-500 mt-1">{card.helper}</p>
+                            <div key={card.label} className="bg-white p-6 rounded-lg border-2 border-gov-border shadow-md hover:shadow-lg transition">
+                                <p className="text-xs font-semibold uppercase tracking-widest text-gov-light mb-2">{card.label}</p>
+                                <p className="text-4xl font-bold text-gov-dark">{card.value}</p>
+                                <p className="text-xs text-gray-600 mt-2">{card.helper}</p>
                             </div>
                         ))}
                     </div>
@@ -199,10 +199,10 @@ export const AdminPage = ({ user, bpData, bpLoading, bpError, onLogout, onNaviga
                         />
 
                         <div className="space-y-6">
-                            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+                            <div className="bg-white rounded-lg border-2 border-gov-border shadow-md p-6 space-y-4">
                                 <div className="flex items-center justify-between">
-                                    <h3 className="text-lg font-semibold text-slate-800">Tautan Cepat</h3>
-                                    <span className="text-xs text-slate-500">Navigasi panel lain</span>
+                                    <h3 className="text-lg font-bold text-gov-dark">Tautan Cepat</h3>
+                                    <span className="text-xs text-gray-500 font-semibold">Navigasi lainnya</span>
                                 </div>
                                 <div className="grid gap-3">
                                     {quickLinks.map((link) => (
@@ -217,20 +217,20 @@ export const AdminPage = ({ user, bpData, bpLoading, bpError, onLogout, onNaviga
                                 </div>
                             </div>
 
-                            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-                                <h3 className="text-lg font-semibold text-slate-800 mb-3">Top Penerima (Terkirim)</h3>
+                            <div className="bg-white rounded-lg border-2 border-gov-border shadow-md p-6">
+                                <h3 className="text-lg font-bold text-gov-dark mb-4">Top Penerima</h3>
                                 <div className="space-y-3">
                                     {topRecipients.length === 0 ? (
-                                        <p className="text-sm text-slate-500">Belum ada pengiriman tercatat.</p>
+                                        <p className="text-sm text-gray-500">Belum ada pengiriman tercatat.</p>
                                     ) : (
                                         topRecipients.map((row) => (
-                                            <div key={row.id} className="flex items-center justify-between gap-3">
+                                            <div key={row.id} className="flex items-center justify-between gap-3 p-3 bg-gov-bg rounded-lg border border-gov-border">
                                                 <div className="min-w-0">
-                                                    <p className="font-medium text-slate-900 truncate">{row.nama_badan_publik}</p>
-                                                    <p className="text-xs text-slate-500 truncate">{row.email || "Email kosong"}</p>
+                                                    <p className="font-semibold text-gov-dark truncate">{row.nama_badan_publik}</p>
+                                                    <p className="text-xs text-gray-600 truncate">{row.email || "Email kosong"}</p>
                                                 </div>
-                                                <div className="text-xs text-slate-600 flex items-center gap-1">
-                                                    <CheckCircle size={16} className="text-emerald-500" />
+                                                <div className="text-xs font-bold text-gov-light flex items-center gap-1">
+                                                    <CheckCircle size={16} className="text-gov-accent" />
                                                     {row.sent_count || 0}x
                                                 </div>
                                             </div>
@@ -241,7 +241,7 @@ export const AdminPage = ({ user, bpData, bpLoading, bpError, onLogout, onNaviga
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <div className="bg-white rounded-lg border-2 border-gov-border shadow-md p-6">
                         <BpTable
                             data={bpData}
                             loading={bpLoading}
@@ -260,14 +260,14 @@ export const AdminPage = ({ user, bpData, bpLoading, bpError, onLogout, onNaviga
 const QuickLinkButton = ({ icon: Icon, label, description, onClick }) => (
     <button
         onClick={onClick}
-        className="w-full p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition flex items-center gap-3 text-left"
+        className="w-full p-4 rounded-lg border-2 border-gov-border bg-gov-bg hover:bg-gov-light hover:text-white transition flex items-center gap-3 text-left"
     >
-        <div className="w-10 h-10 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-blue-600">
-            <Icon size={20} />
+        <div className="w-10 h-10 rounded-lg bg-gov-light flex items-center justify-center text-white flex-shrink-0">
+            <Icon size={20} className="font-bold" />
         </div>
         <div>
-            <p className="text-sm font-semibold text-slate-900">{label}</p>
-            <p className="text-xs text-slate-500">{description}</p>
+            <p className="text-sm font-bold text-gov-dark hover:text-white">{label}</p>
+            <p className="text-xs text-gray-600 hover:text-white/90">{description}</p>
         </div>
     </button>
 );

@@ -6,7 +6,6 @@ export const BpFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
         nama: "", kategori: "", email: "", website: "", pertanyaan: ""
     });
 
-    // Isi form jika sedang mode Edit
     useEffect(() => {
         if (initialData) {
             setFormData({
@@ -30,47 +29,47 @@ export const BpFormModal = ({ isOpen, onClose, onSubmit, initialData }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-            <div className="bg-white rounded-xl shadow-xl w-full max-w-lg">
-                <div className="flex justify-between items-center p-4 border-b">
-                    <h3 className="text-lg font-bold text-slate-800">
-                        {initialData ? "Edit Badan Publik" : "Tambah Badan Publik"}
+            <div className="bg-white rounded-lg shadow-2xl w-full max-w-lg border-t-4 border-gov-accent">
+                <div className="flex justify-between items-center p-6 border-b-2 border-gov-border bg-gov-bg">
+                    <h3 className="text-xl font-bold text-gov-dark">
+                        {initialData ? "✏️ Edit Badan Publik" : "➕ Tambah Badan Publik Baru"}
                     </h3>
-                    <button onClick={onClose}><X className="text-slate-400 hover:text-slate-600" /></button>
+                    <button onClick={onClose}><X className="text-gov-light hover:text-gov-dark transition" size={24} /></button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-4 space-y-4">
+                <form onSubmit={handleSubmit} className="p-6 space-y-4">
                     <div>
-                        <label className="block text-xs font-bold text-slate-600 uppercase mb-1">Nama Badan Publik</label>
-                        <input required type="text" className="w-full border rounded p-2 text-sm"
+                        <label className="block text-xs font-bold text-gov-dark uppercase mb-2 tracking-widest">Nama Badan Publik</label>
+                        <input required type="text" className="w-full border-2 border-gov-border rounded-lg p-3 text-sm focus:ring-2 focus:ring-gov-light focus:border-gov-light outline-none transition"
                             value={formData.nama} onChange={e => setFormData({ ...formData, nama: e.target.value })} />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-xs font-bold text-slate-600 uppercase mb-1">Kategori</label>
-                            <input type="text" className="w-full border rounded p-2 text-sm"
+                            <label className="block text-xs font-bold text-gov-dark uppercase mb-2 tracking-widest">Kategori</label>
+                            <input type="text" className="w-full border-2 border-gov-border rounded-lg p-3 text-sm focus:ring-2 focus:ring-gov-light focus:border-gov-light outline-none transition"
                                 value={formData.kategori} onChange={e => setFormData({ ...formData, kategori: e.target.value })} />
                         </div>
                         <div>
-                            <label className="block text-xs font-bold text-slate-600 uppercase mb-1">Email</label>
-                            <input required type="email" className="w-full border rounded p-2 text-sm"
+                            <label className="block text-xs font-bold text-gov-dark uppercase mb-2 tracking-widest">Email</label>
+                            <input required type="email" className="w-full border-2 border-gov-border rounded-lg p-3 text-sm focus:ring-2 focus:ring-gov-light focus:border-gov-light outline-none transition"
                                 value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
                         </div>
                     </div>
                     <div>
-                        <label className="block text-xs font-bold text-slate-600 uppercase mb-1">Website</label>
-                        <input type="text" className="w-full border rounded p-2 text-sm"
+                        <label className="block text-xs font-bold text-gov-dark uppercase mb-2 tracking-widest">Website</label>
+                        <input type="text" className="w-full border-2 border-gov-border rounded-lg p-3 text-sm focus:ring-2 focus:ring-gov-light focus:border-gov-light outline-none transition"
                             value={formData.website} onChange={e => setFormData({ ...formData, website: e.target.value })} />
                     </div>
                     <div>
-                        <label className="block text-xs font-bold text-slate-600 uppercase mb-1">Template Pertanyaan</label>
-                        <textarea className="w-full border rounded p-2 text-sm h-24"
+                        <label className="block text-xs font-bold text-gov-dark uppercase mb-2 tracking-widest">Template Pertanyaan</label>
+                        <textarea className="w-full border-2 border-gov-border rounded-lg p-3 text-sm h-24 focus:ring-2 focus:ring-gov-light focus:border-gov-light outline-none transition"
                             value={formData.pertanyaan} onChange={e => setFormData({ ...formData, pertanyaan: e.target.value })} />
                     </div>
 
-                    <div className="pt-2 flex justify-end gap-2">
-                        <button type="button" onClick={onClose} className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded">Batal</button>
-                        <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-2">
-                            <Save size={16} /> Simpan
+                    <div className="pt-4 flex justify-end gap-3">
+                        <button type="button" onClick={onClose} className="px-5 py-2.5 text-gov-dark hover:bg-gov-bg rounded-lg font-bold border-2 border-gov-border transition">Batal</button>
+                        <button type="submit" className="px-5 py-2.5 bg-gradient-to-r from-gov-dark to-gov-light text-white rounded-lg hover:from-gov-light hover:to-gov-dark flex items-center gap-2 font-bold transition">
+                            <Save size={18} /> Simpan
                         </button>
                     </div>
                 </form>

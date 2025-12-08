@@ -97,29 +97,29 @@ export const EmailHistoryPage = ({ user, onLogout, onNavigate }) => {
         <DashboardLayout user={user} onLogout={onLogout} onNavigate={onNavigate}>
             <div className="space-y-6">
                 {/* Header */}
-                <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-6 text-white shadow-lg">
-                    <h2 className="text-2xl font-bold mb-1">Riwayat Email</h2>
-                    <p className="text-purple-100 opacity-90">Kelola dan pantau email yang telah dikirim</p>
+                <div className="bg-gradient-to-r from-gov-dark to-gov-light rounded-lg p-6 text-white shadow-lg border-b-4 border-gov-accent">
+                    <h2 className="text-3xl font-bold mb-1">📧 Riwayat Email</h2>
+                    <p className="text-gov-accent opacity-90 font-semibold">Kelola dan pantau email yang telah dikirim</p>
                 </div>
 
                 {/* Statistics Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                    <StatCard label="Total" value={stats.total} color="bg-slate-500" />
-                    <StatCard label="Terkirim" value={stats.sent} color="bg-green-500" />
+                    <StatCard label="Total" value={stats.total} color="bg-gov-dark" />
+                    <StatCard label="Terkirim" value={stats.sent} color="bg-gov-accent" />
                     <StatCard label="Gagal" value={stats.failed} color="bg-red-500" />
-                    <StatCard label="Dibalas" value={stats.replied} color="bg-blue-500" />
-                    <StatCard label="Pending" value={stats.pending} color="bg-yellow-500" />
+                    <StatCard label="Dibalas" value={stats.replied} color="bg-gov-light" />
+                    <StatCard label="Pending" value={stats.pending} color="bg-gray-400" />
                 </div>
 
                 {/* Search and Filter */}
-                <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                <div className="bg-white rounded-lg border-2 border-gov-border shadow-md p-6">
                     <div className="flex gap-4 mb-4">
                         <div className="flex-1 relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gov-light" />
                             <input
                                 type="text"
                                 placeholder="Cari berdasarkan penerima, email, atau subjek..."
-                                className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                className="w-full pl-10 pr-4 py-2.5 border-2 border-gov-border rounded-lg focus:outline-none focus:ring-2 focus:ring-gov-light focus:border-gov-light transition"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
@@ -127,9 +127,9 @@ export const EmailHistoryPage = ({ user, onLogout, onNavigate }) => {
                         </div>
                         <button
                             onClick={handleSearch}
-                            className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+                            className="px-6 py-2.5 bg-gradient-to-r from-gov-dark to-gov-light text-white rounded-lg hover:from-gov-light hover:to-gov-dark transition font-bold"
                         >
-                            Cari
+                            🔍 Cari
                         </button>
                     </div>
 
@@ -162,10 +162,10 @@ export const EmailHistoryPage = ({ user, onLogout, onNavigate }) => {
                 </div>
 
                 {/* Email List */}
-                <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
+                <div className="bg-white rounded-lg border-2 border-gov-border shadow-md">
                     {loading ? (
-                        <div className="p-8 text-center text-slate-500">
-                            <div className="animate-spin w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+                        <div className="p-8 text-center text-gov-light">
+                            <div className="animate-spin w-8 h-8 border-4 border-gov-light border-t-transparent rounded-full mx-auto mb-4"></div>
                             Memuat data...
                         </div>
                     ) : error ? (
@@ -174,24 +174,24 @@ export const EmailHistoryPage = ({ user, onLogout, onNavigate }) => {
                             {error}
                         </div>
                     ) : filteredEmails.length === 0 ? (
-                        <div className="p-8 text-center text-slate-500">
+                        <div className="p-8 text-center text-gray-500">
                             <Mail className="w-12 h-12 mx-auto mb-4 opacity-50" />
                             Tidak ada email
                         </div>
                     ) : (
                         <div className="overflow-x-auto">
                             <table className="w-full">
-                                <thead className="bg-slate-50 border-b border-slate-200">
+                                <thead className="bg-gov-bg border-b-2 border-gov-border">
                                     <tr>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Penerima</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Email</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Subjek</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Status</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Waktu</th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Aksi</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-gov-dark uppercase">Penerima</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-gov-dark uppercase">Email</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-gov-dark uppercase">Subjek</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-gov-dark uppercase">Status</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-gov-dark uppercase">Waktu</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-gov-dark uppercase">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-slate-200">
+                                <tbody className="divide-y divide-gov-border">
                                     {filteredEmails.map((email) => (
                                         <EmailRow
                                             key={email.id}
@@ -255,6 +255,11 @@ const EmailRow = ({ email, onView, formatDate }) => {
             </td>
             <td className="px-6 py-4 text-sm text-slate-600">
                 <div className="max-w-xs truncate">{email.subject || '-'}</div>
+                {email.status === 'failed' && (
+                    <div className="text-xs text-red-500 mt-1 truncate max-w-xs">
+                        {email.body ? email.body.replace('Error: ', '') : 'Gagal'}
+                    </div>
+                )}
             </td>
             <td className="px-6 py-4">
                 <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${config.color}`}>

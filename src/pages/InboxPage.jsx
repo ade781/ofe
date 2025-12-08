@@ -89,71 +89,71 @@ export const InboxPage = ({ user, onLogout, onNavigate }) => {
             <ToastContainer />
             <DashboardLayout user={user} onLogout={onLogout} onNavigate={onNavigate}>
                 <div className="space-y-6">
-                    <div className="bg-gradient-to-r from-cyan-600 to-blue-700 rounded-2xl p-6 text-white shadow-lg">
+                    <div className="bg-gradient-to-r from-gov-dark to-gov-light rounded-lg p-6 text-white shadow-lg border-b-4 border-gov-accent">
                         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                             <div>
-                                <p className="text-xs uppercase tracking-wider text-cyan-200">Kotak Masuk</p>
-                                <h2 className="text-2xl font-bold">Balasan Email</h2>
-                                <p className="text-sm text-cyan-100 opacity-90 mt-1">
+                                <p className="text-xs uppercase tracking-widest text-gov-accent font-bold">💌 Kotak Masuk</p>
+                                <h2 className="text-3xl font-bold mt-1">Balasan Email</h2>
+                                <p className="text-sm text-white/90 opacity-90 mt-2">
                                     Memantau balasan dari Badan Publik yang Anda hubungi.
                                 </p>
                             </div>
                             <button
                                 onClick={handleRefresh}
                                 disabled={refreshing}
-                                className={`mt-4 sm:mt-0 inline-flex items-center gap-2 px-5 py-2.5 border border-white/30 rounded-full text-sm font-semibold bg-white/10 hover:bg-white/20 transition ${refreshing ? "opacity-70 cursor-not-allowed" : ""}`}
+                                className={`mt-4 sm:mt-0 inline-flex items-center gap-2 px-5 py-2.5 border-2 border-gov-accent rounded-lg text-sm font-bold bg-gov-accent text-gov-dark hover:bg-white transition ${refreshing ? "opacity-70 cursor-not-allowed" : ""}`}
                             >
-                                <RefreshCw size={16} className={refreshing ? "animate-spin" : ""} />
-                                {refreshing ? "Menyinkronkan..." : "Sinkronisasi Email"}
+                                <RefreshCw size={18} className={refreshing ? "animate-spin" : ""} />
+                                {refreshing ? "⏳ Menyinkronkan..." : "🔄 Sinkronisasi"}
                             </button>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div className="p-6 border-b border-slate-100 flex justify-between items-center">
+                    <div className="bg-white rounded-lg border-2 border-gov-border shadow-md overflow-hidden">
+                        <div className="p-6 border-b-2 border-gov-border flex justify-between items-center">
                             <div>
-                                <h3 className="font-semibold text-slate-800">Daftar Balasan</h3>
-                                <p className="text-sm text-slate-500">Klik pesan untuk melihat detail</p>
+                                <h3 className="font-bold text-gov-dark text-lg">Daftar Balasan</h3>
+                                <p className="text-sm text-gray-600">Klik pesan untuk melihat detail</p>
                             </div>
-                            <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">
+                            <span className="bg-gov-accent text-gov-dark text-xs font-bold px-3 py-1.5 rounded-lg">
                                 {replies.length} Pesan
                             </span>
                         </div>
 
                         {loading ? (
-                            <div className="flex flex-col items-center justify-center h-64 text-slate-500">
-                                <span className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full mb-3"></span>
-                                <p>Memuat data...</p>
+                            <div className="flex flex-col items-center justify-center h-64 text-gov-light">
+                                <span className="animate-spin w-8 h-8 border-4 border-gov-light border-t-transparent rounded-full mb-3"></span>
+                                <p className="font-semibold">Memuat data...</p>
                             </div>
                         ) : replies.length === 0 ? (
-                            <div className="text-center text-slate-400 py-16">
-                                <Mail size={48} className="mx-auto mb-3 opacity-20" />
-                                <p>Belum ada balasan masuk.</p>
+                            <div className="text-center text-gray-400 py-16">
+                                <Mail size={48} className="mx-auto mb-3 opacity-30" />
+                                <p className="font-semibold">Belum ada balasan masuk.</p>
                             </div>
                         ) : (
-                            <div className="divide-y divide-slate-50">
+                            <div className="divide-y divide-gov-border">
                                 {replies.map((reply) => (
                                     <button
                                         key={reply.id}
                                         onClick={() => setSelectedReply(reply)}
-                                        className="w-full text-left p-4 hover:bg-slate-50 transition group"
+                                        className="w-full text-left p-4 hover:bg-gov-bg transition group"
                                     >
                                         <div className="flex justify-between items-start mb-1">
-                                            <div className="flex items-center gap-2 text-sm font-medium text-blue-700">
+                                            <div className="flex items-center gap-2 text-sm font-bold text-gov-light">
                                                 <span className="truncate max-w-[200px]">
                                                     {reply.from_name || reply.from_email}
                                                 </span>
                                             </div>
-                                            <span className="text-xs text-slate-400 whitespace-nowrap ml-2">
+                                            <span className="text-xs text-gray-500 whitespace-nowrap ml-2 font-semibold">
                                                 {formatDate(reply.received_at)}
                                             </span>
                                         </div>
 
-                                        <h4 className="text-base font-semibold text-slate-800 mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors">
+                                        <h4 className="text-base font-bold text-gov-dark mb-1 line-clamp-1 group-hover:text-gov-light transition-colors">
                                             {reply.subject || "(Tanpa Subjek)"}
                                         </h4>
 
-                                        <p className="text-sm text-slate-500 line-clamp-2 mb-2">
+                                        <p className="text-sm text-gray-600 line-clamp-2 mb-2">
                                             {reply.message || "Tidak ada pratinjau pesan."}
                                         </p>
 

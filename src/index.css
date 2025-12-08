@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-100;
+  @apply bg-gov-bg;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+  color: #003d7a;
 }
 
 @keyframes fadeIn {

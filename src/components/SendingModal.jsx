@@ -6,45 +6,45 @@ export const SendingModal = ({ isOpen, status, progress }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md">
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 p-8 text-center animate-slideUp">
+            <div className="bg-white rounded-lg shadow-2xl w-full max-w-md mx-4 p-8 text-center animate-slideUp border-t-4 border-gov-accent">
                 {status === "sending" && (
                     <>
                         <div className="relative mb-6">
-                            <div className="w-24 h-24 mx-auto bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center animate-pulse">
+                            <div className="w-24 h-24 mx-auto bg-gradient-to-br from-gov-dark to-gov-light rounded-full flex items-center justify-center animate-pulse">
                                 <Mail size={40} className="text-white animate-bounce" />
                             </div>
-                            <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full border-4 border-blue-200 animate-ping"></div>
+                            <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full border-4 border-gov-accent/40 animate-ping"></div>
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-800 mb-2">Mengirim Email...</h3>
-                        <p className="text-slate-600 mb-6">Mohon tunggu, email sedang dikirim ke badan publik</p>
+                        <h3 className="text-2xl font-bold text-gov-dark mb-2">📬 Mengirim Email...</h3>
+                        <p className="text-gray-600 mb-6">Mohon tunggu, email sedang dikirim ke badan publik</p>
 
-                        <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden mb-2">
+                        <div className="w-full bg-gov-border rounded-full h-3 overflow-hidden mb-3">
                             <div
-                                className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-500 ease-out"
+                                className="h-full bg-gradient-to-r from-gov-dark to-gov-accent transition-all duration-500 ease-out"
                                 style={{ width: `${progress || 0}%` }}
                             ></div>
                         </div>
-                        <p className="text-sm text-slate-500">{progress || 0}% selesai</p>
+                        <p className="text-sm font-bold text-gov-light">{progress || 0}% selesai</p>
                     </>
                 )}
 
                 {status === "success" && (
                     <>
-                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center mb-6 animate-scaleIn">
-                            <CheckCircle size={50} className="text-white" />
+                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-gov-accent to-green-600 rounded-full flex items-center justify-center mb-6 animate-scaleIn">
+                            <CheckCircle size={50} className="text-gov-dark" />
                         </div>
-                        <h3 className="text-2xl font-bold text-green-600 mb-2">Email Terkirim!</h3>
-                        <p className="text-slate-600">Semua email berhasil dikirim ke badan publik</p>
+                        <h3 className="text-2xl font-bold text-gov-dark mb-2">✓ Email Terkirim!</h3>
+                        <p className="text-gray-600">Semua email berhasil dikirim ke badan publik</p>
                     </>
                 )}
 
                 {status === "error" && (
                     <>
-                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mb-6 animate-shake">
+                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center mb-6 animate-shake">
                             <XCircle size={50} className="text-white" />
                         </div>
-                        <h3 className="text-2xl font-bold text-red-600 mb-2">Pengiriman Gagal</h3>
-                        <p className="text-slate-600">Terjadi kesalahan saat mengirim email</p>
+                        <h3 className="text-2xl font-bold text-red-600 mb-2">✗ Pengiriman Gagal</h3>
+                        <p className="text-gray-600">Terjadi kesalahan saat mengirim email</p>
                     </>
                 )}
             </div>
